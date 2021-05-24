@@ -132,3 +132,19 @@ class Enrollment(models.Model):
 #    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
 #    chocies = models.ManyToManyField(Choice)
 #    Other fields and methods you would like to design
+
+class Choice(models.Model):
+
+# <HINT> The submission model
+# One enrollment could have multiple submission
+# One submission could have multiple choices
+# One choice could belong to multiple submissions
+    Choice = (
+        (DEFAULT, 'AUDIT')
+        (NOT_DEFAULT, 'HONOR')
+        (TEST, 'BETA')
+    )
+
+class Submission(models.Model):
+    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    chocies = models.ManyToManyField(Choice)
